@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+/**
+ * user controller
+ *
+ * @author monlie
+ */
 @Controller
 public class UserController {
 
