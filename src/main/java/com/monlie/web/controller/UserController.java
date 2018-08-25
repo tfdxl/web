@@ -27,12 +27,6 @@ public class UserController {
         return "hello";
     }
 
-    /**
-     * 这个方法
-     *
-     * @param map
-     * @return
-     */
     @RequestMapping("/indexPage")
     public String helloFtl(HttpServletRequest request, Map<String, Object> map) {
 
