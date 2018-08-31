@@ -32,7 +32,7 @@ public class UserController {
 
         String method = request.getMethod();
         System.err.print(method);
-        Thread.dumpStack();
+        //Thread.dumpStack();
         map.put("desc", userRepository.getUserInfo());
         map.put("hello", "Hello FreeMarker");
         return "index";
