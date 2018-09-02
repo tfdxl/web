@@ -30,6 +30,8 @@ public class UserController {
     @RequestMapping("/indexPage")
     public String helloFtl(HttpServletRequest request, @RequestParam("name") String name, Map<String, Object> map) {
 
+        String remoteUser = request.getRemoteUser();
+        log.info("remote user is " + remoteUser);
         log.info("name is " + name);
         StringBuffer url = request.getRequestURL();
         log.info("request url is " + url);
