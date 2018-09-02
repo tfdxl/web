@@ -30,14 +30,16 @@ public class UserController {
     @RequestMapping("/indexPage")
     public String helloFtl(HttpServletRequest request, @RequestParam("name") String name, Map<String, Object> map) {
 
+        final String remoteAddr = request.getRemoteAddr();
+        final String remoteHost = request.getRemoteHost();
+        final int port = request.getRemotePort();
+
+        log.info("Remote info ,addr:{},host:{},port:{}", remoteAddr, remoteHost, port);
         String remoteUser = request.getRemoteUser();
-        log.info("remote user is " + remoteUser);
-        log.info("name is " + name);
-        StringBuffer url = request.getRequestURL();
-        log.info("request url is " + url);
+
         Thread.State state = Thread.currentThread().getState();
         Thread current = Thread.currentThread();
-        log.error("Current Thread is " + current.getName() + ", state is " + state.toString());
+        log.info("Current Thread is " + current.getName() + ", state is " + state.toString());
         map.put("desc", userRepository.getUserInfo());
         map.put("hello", "Hello FreeMarker");
         return "index";
