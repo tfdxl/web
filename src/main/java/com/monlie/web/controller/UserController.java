@@ -27,7 +27,7 @@ public class UserController {
         return "hello";
     }
 
-    @RequestMapping("/indexPage")
+    @RequestMapping(value = "/indexPage", method = RequestMethod.GET)
     public String helloFtl(HttpServletRequest request, @RequestParam(value = "name", required = false) String name, Map<String, Object> map) throws InterruptedException {
 
         //Thread.sleep(25);
