@@ -28,12 +28,12 @@ public class UserController {
     }
 
     @RequestMapping("/indexPage")
-    public String helloFtl(HttpServletRequest request, @RequestParam("name") String name, Map<String, Object> map) {
+    public String helloFtl(HttpServletRequest request, @RequestParam(value = "name", required = false) String name, Map<String, Object> map) throws InterruptedException {
 
+        //Thread.sleep(25);
         final String remoteAddr = request.getRemoteAddr();
         final String remoteHost = request.getRemoteHost();
         final int port = request.getRemotePort();
-
         log.info("Remote info ,addr:{},host:{},port:{}", remoteAddr, remoteHost, port);
         String remoteUser = request.getRemoteUser();
 
