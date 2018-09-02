@@ -1,11 +1,10 @@
 package com.monlie.web.controller;
 
 import com.monlie.web.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -15,7 +14,8 @@ import java.util.Map;
  *
  * @author monlie
  */
-@RestController
+@Controller
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -28,9 +28,14 @@ public class UserController {
     }
 
     @RequestMapping("/indexPage")
-    public String helloFtl(HttpServletRequest request, Map<String, Object> map) {
+    public String helloFtl(HttpServletRequest request, @RequestParam("name") String name, Map<String, Object> map) {
+
+        log.info("name is " + name);
+        StringBuffer url = request.getRequestURL();
+        log.info("request url is " + url);
         Thread.State state = Thread.currentThread().getState();
-        System.err.print(state);
+        Thread current = Thread.currentThread();
+        log.error("Current Thread is " + current.getName() + ", state is " + state.toString());
         map.put("desc", userRepository.getUserInfo());
         map.put("hello", "Hello FreeMarker");
         return "index";
